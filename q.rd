@@ -1,48 +1,39 @@
-<resource schema="mars_craters">
-<!--	<meta name="title">Martian Impact Craters</meta> -->
-	<meta name="title">Mars_craters</meta>
-	<meta name="description">
-Mars Crater Catalog by S.J. Robbins was generated from THEMIS Daytime IR &amp; Viking MDIM 2.1 global mosaics of Mars. Craters were selected using 5 points along the rim. Table is statistically complete to the 
-diameter of ~1.0 km. Table contains morphologic and morphometric data for craters with diameter larger than 3 km. Prometheus basin has been excluded from the Catalog due to technical issues. Robbins, S.J., and B.M. Hynek (2012). A New Global Database of Mars Impact 
-Craters ≥1 km: 1. Database Creation, Properties, and Parameters. Journal of Geophysical Research – Planets, 117, E05004. doi: 10.1029/2011JE003966
-</meta>
-	<meta name="creationDate">2016-05-12T00:00:00</meta>
-	<meta name="subject">_____</meta>
+<resource schema="mars_craters_lagain">
+	<meta name="title">Mars_craters_lagain</meta>
+	<meta name="description">This catalog contains all craters of the Robbins catalog and 185 craters added by the reviewer team, unidentified by Robbins. The crater ID is the same for all craters in database than those published in the Robbins' catalog. </meta>
+	<meta name="creationDate">2017-08-28T12:55:00</meta>
+	<meta name="subject">Mars, crater, geology, surface, topography</meta>
 	<meta name="creator.name">Mikhail Minin</meta>
 	<meta name="contact.name">Mikhail Minin</meta>
 	<meta name="contact.email">m.minin@jacobs-university.de</meta>
 	<meta name="instrument">THEMIS Daytime IR</meta>
-
-        <meta name="subjects">Mars, crater, geology, surface, topography</meta>
-
 	<meta name="facility">Jacobs University</meta>
-	<meta name="source">Stuart Robbins, Laboratory for Atmospheric and Space Physics, University of Colorado at Boulder, Boulder, Colorado, USA.</meta>
+	<meta name="source">[Lagain et al. in prep.]</meta>
 	<meta name="contentLevel"></meta>
 	<meta name="type">Catalog</meta>
-	<meta name="coverage"><!--wavelengths, etc--></meta>
+	<meta name="coverage">
+	</meta>
 
 <!-- METADATA COMPLETE -->
 
-	<table id="epn_core" adql="True" onDisk="True">
-		<mixin spatial_frame_type="body" optional_columns="target_region bib_reference">//epntap2#table-2_0</mixin>
-		<meta name="description">Global Catalog of Martian Impact Craters, Complete to 1.0-km in Diameter by Stuart Robbins, 2009-present</meta>
-		<stc>Polygon UNKNOWNFrame [s_region]</stc>
+	<table id="epn_core" onDisk="true">
+		<mixin  spatial_frame_type="body" optional_columns="target_region">//epntap2#table-2_0</mixin>
+		<meta name="info" infoName="SERVICE_PROTOCOL" infoValue="0.3">EPN-TAP</meta>
+		<meta name="description">Revised mars_craters database. Table is in development, please use with caution.</meta>
+		<stc>
+			Polygon ICRS [s_region]
+		</stc>
+<!-- MAKE OPTIONAL COLUMNS: -->
+<!-- MAKE ADDITIONAL COLUMNS: -->
+                <column name="radius" type="double precision" ucd="meta.note;meta.main" tablehead="radius" verbLevel="1" description="radius from THEMIS IR" />
+		<column name="type" type="integer" ucd="meta.note;meta.main" tablehead="type" verbLevel="1" description="Crater classification (int): 1=Valid, 2=Layered ejecta, 3=Ghost, 4=Secondary, 5=False detections." />
+                <column name="status" type="text" ucd="meta.note;meta.main" tablehead="status" verbLevel="1" description="Crater classification." />
 
-<column name="diameter" type="double precision" ucd="meta.note;meta.main" tablehead="Diameter" verbLevel="1" description="diameter from THEMIS IR, non standard" />
-<column name="depth" type="double precision" ucd="meta.note;meta.main" tablehead="Depth" verbLevel="1" description="depth surface to floor, non standard" />
+    <column name="LRD_MORPH" type="text" ucd="meta.note;meta.main" tablehead="Layered ejecta crater morphology" verbLevel="1" description="SLE : Single Layered Ejecta, DLE : Double Layered Ejecta MLE : Multiple Layered Ejecta, LARLE : Low-Aspect Ratio Layered Ejecta." />
+    <column name="type" type="text" ucd="meta.note;meta.main" tablehead="type" verbLevel="1" description="1=Valid, 2=Layered ejecta, 3=Ghost, 4=Secondary, 5=False detections." />
+    <column name="origin" type="text" ucd="meta.note;meta.main" tablehead="origin" verbLevel="1" description="Primary crater ID for secondary craters." />
 
-
-<column name="target_region" type="text" ucd="meta.id;class" tablehead="Target Region" verbLevel="1" description="type of region of interest" />
-<column name="feature_name" type="text" ucd="meta.note;meta.main" tablehead="Feature Name" verbLevel="1" description="secondary name" />
-
-<column name="degradation_state" type="text" ucd="meta.note;meta.main" tablehead="Degradation State" verbLevel="1" description="non standard" />
-<column name="crater_morphology_1" type="text" ucd="meta.note;meta.main" tablehead="Crater Morphology 1" verbLevel="1" description="non standard" />
-<column name="crater_morphology_2" type="text" ucd="meta.note;meta.main" tablehead="Crater Morphology 2" verbLevel="1" description="non standard" />
-<column name="crater_morphology_3" type="text" ucd="meta.note;meta.main" tablehead="Crater Morphology 3" verbLevel="1" description="non standard" />
-<column name="ejecta_morphology_1" type="text" ucd="meta.note;meta.main" tablehead="Ejecta Morphology 1" verbLevel="1" description="non standard" />
-<column name="ejecta_morphology_2" type="text" ucd="meta.note;meta.main" tablehead="Ejecta Morphology 2" verbLevel="1" description="non standard" />
-
-<column name="s_region" xtype="adql:REGION" type="spoly" ucd="phys.outline;obs.field" description="Provides footprint" />
+    <column name="adding" type="text" ucd="meta.note;meta.main" tablehead="adding" verbLevel="1" description="null = Craters contained in the Robbins' database, 1 = Craters added by the reviewers" />
 
 
 		<publish sets="ivo_managed,local"/>
@@ -50,7 +41,8 @@ Craters ≥1 km: 1. Database Creation, Properties, and Parameters. Journal of Ge
 <!-- TABLE COMPLETE -->
 
 	<data id="import">
-		<sources>data/robins03.csv</sources>
+		<sources>data/Lagain_crater_database05.csv</sources>
+<!--		<sources>data/test.csv</sources>-->
 		<csvGrammar>
 			<rowfilter procDef="//products#define">
 				<bind name="table">"schema.epn_core"</bind>
@@ -58,16 +50,7 @@ Craters ≥1 km: 1. Database Creation, Properties, and Parameters. Journal of Ge
 		</csvGrammar>
 		<make table="epn_core">
 			<rowmaker idmaps="*">
-
-<var key="diameter"            source="DIAM_CIRCLE_IMAGE"      />
-<var key="depth"               source="DEPTH_SURFFLOOR_TOPOG"  />
-<var key="feature_name"        source="CRATER_NAME"            />
-<var key="degradation_state"   source="DEGRADATION_STATE"      />
-<var key="crater_morphology_1" source="MORPHOLOGY_CRATER_1"    />
-<var key="crater_morphology_2" source="MORPHOLOGY_CRATER_2"    />
-<var key="crater_morphology_3" source="MORPHOLOGY_CRATER_3"    />
-<var key="ejecta_morphology_1" source="MORPHOLOGY_EJECTA_1"    />
-<var key="ejecta_morphology_2" source="MORPHOLOGY_EJECTA_2"    />
+<!--<var key="diameter" source="diam" />-->
 
 				<var key="granule_uid" source="CRATER_ID" />
 				<var key="granule_gid">(@granule_uid)[:2]</var>
@@ -76,52 +59,61 @@ Craters ≥1 km: 1. Database Creation, Properties, and Parameters. Journal of Ge
 				<var key="dataproduct_type">"ci"</var>
 				<var key="measurement_type">"pos.bodyrc"</var>
 
+				<var key="processing_level">"5"</var>
+
 				<var key="target_name">"Mars"</var>
 				<var key="target_class">"planet"</var>
 
-				<var key="c1min" source="LONGITUDE_CIRCLE_IMAGE" />
-				<var key="c1min">360-[@c1min+360,@c1min][@c1min>0]</var>
-<var key="c1min">360-@c1min</var>
-<var key="c1max">@c1min</var>
 
-				<var key="c2min" source="LATITUDE_CIRCLE_IMAGE" />
-				<var key="c2max" source="LATITUDE_CIRCLE_IMAGE" />
+
+				<var key="c1min" source="Lon" />
+				<var key="c1max" source="Lon" />
+
+				<var key="c2min" source="Y" />
+				<var key="c2max" source="Y" />
+
 
 				<var key="spatial_frame_type">"body"</var>
-				<var key="processing_level">5</var>
+
+
+			<var key="radius" source="RADIUS" />
+
+
+				<var key="s_region">pgsphere.SCircle(pgsphere.SPoint.fromDegrees(@c1min,@c2min),(@radius/(math.pi*3390.0*1000.0/180.0))*pgsphere.DEG).asPoly().asSTCS("UNKNOWNFrame")</var>
+
+
+<!--<var key="s_region">pgsphere.SCircle(pgsphere.SPoint.fromDegrees(-70,158),90*pgsphere.DEG). asPoly().asSTCS("UNKNOWNFrame")</var>-->
+<!--<var key="s_region">pgsphere.SCircle(pgsphere.SPoint.fromDegrees(131,-5),90*pgsphere.DEG). asPoly().asSTCS("UNKNOWNFrame")</var>-->
+
+<!--<var key="s_region">pgsphere.SCircle(pgsphere.SPoint.fromDegrees(0,0),90.1*pgsphere.DEG). asPoly().asSTCS("UNKNOWNFrame")</var>-->
+
+
 
 				<var key="instrument_host_name">"Mars Odyssey"</var>
 				<var key="instrument_name">"THEMIS"</var>
 
-<var key="target_region">"craters"</var>
-
-<!--HERE WE SET CRS TO EAST INCREASING-->
-
-<var key="s_region">pgsphere.SCircle(pgsphere.SPoint.fromDegrees(@c1min,@c2min),(@diameter/(2.0*math.pi*3390.0/180.0))*pgsphere.DEG).asPoly().asSTCS("UNKNOWNFrame")</var>
-
-<!-- THIS IS NOW OBSOLETE, GOING TO USE PGSPHERE INSTEAD:
-<var key="s_region">
-'Polygon '+' '.join([' '.join(i) for i in map(lambda t: (str((-t[3])+(t[1]*((t[2]) / 2.0))/(math.pi*3390.0*math.cos(((t[4])+(t[0]*((t[2]) / 2.0))/    \
-(math.pi*3390.0 / 180.0))*math.pi/180.0) / 180.0)),str((t[4])+t[0]*((t[2]) / 2.0)/(math.pi*3390.0 / 180.0))),                                        \
-[(1,0,vars["diameter"],vars["c1min"],vars["c2min"]),(.7,.7,vars["diameter"],vars["c1min"],vars["c2min"]),(0,1,vars["diameter"],                      \
-vars["c1min"],vars["c2min"]),(-.7,.7,vars["diameter"],vars["c1min"],vars["c2min"]),(-1,0,vars["diameter"],vars["c1min"],vars["c2min"]),              \
-(-.7,-.7,vars["diameter"],vars["c1min"],vars["c2min"]),(0,-1,vars["diameter"],vars["c1min"],vars["c2min"]),(.7,-.7,vars["diameter"],                 \
-vars["c1min"],vars["c2min"])])])
-</var>
--->
-
-<var key="bib_reference">"10.1029/2011JE003967"</var>
+				<var key="service_title">"Mars_craters_dev"</var>
+				<var key="creation_date">"2018-01-12"</var>
+				<var key="modification_date">"2018-01-26"</var>
+				<var key="release_date">"2017-01-12"</var>
 
 
-<var key="service_title">"Mars_craters"</var>
 
-<var key="creation_date">"2016-1-1"</var>
-<var key="modification_date">"2016-1-1"</var>
-<var key="release_date">"2016-1-1"</var>
+
+
+
+
+
+				<var key="target_region">"craters"</var>
+
+				<var key="status" source="STATUS" />
+				<var key="type" source="TYPE" />
+				<var key="LRD_MORPH" source="LRD_MORPH" />
+				<var key="adding" source="ADDING" />
+				<var key="origin" source="ORIGIN" />
 
 
 				<apply procDef="//epntap2#populate-2_0" name="fillepn">
-<bind name="processing_level">@processing_level</bind>
 					<bind name="granule_uid">@granule_uid</bind>
 					<bind name="granule_gid">@granule_gid</bind>
 					<bind name="obs_id">@obs_id</bind>
@@ -129,8 +121,12 @@ vars["c1min"],vars["c2min"])])])
 					<bind name="dataproduct_type">@dataproduct_type</bind>
 					<bind name="measurement_type">@measurement_type</bind>
 
+					<bind name="processing_level">@processing_level</bind>
+
 					<bind name="target_name">@target_name</bind>
 					<bind name="target_class">@target_class</bind>
+
+
 
 					<bind name="c1min">@c1min</bind>
 					<bind name="c1max">@c1max</bind>
@@ -138,23 +134,22 @@ vars["c1min"],vars["c2min"])])])
 					<bind name="c2min">@c2min</bind>
 					<bind name="c2max">@c2max</bind>
 
+
+
+
+
+
+					<bind name="s_region">@s_region</bind>
+
 					<bind name="instrument_host_name">@instrument_host_name</bind>
 					<bind name="instrument_name">@instrument_name</bind>
 
+					<bind name="service_title">@service_title</bind>
+					<bind name="creation_date">@creation_date</bind>
+					<bind name="modification_date">@modification_date</bind>
+					<bind name="release_date">@release_date</bind>
 
-
-<bind name="service_title">@service_title</bind>
-
-<bind name="creation_date">@creation_date</bind>
-<bind name="modification_date">@modification_date</bind>
-<bind name="release_date">@release_date</bind>
-
-
-<!-- QUICK FIX -->
-
-<bind name="s_region">@s_region</bind>
-
-<!-- QUICK FIX ENDS -->
+<bind name="target_region">@target_region</bind>
 
 				</apply>
 			</rowmaker>
