@@ -1,25 +1,31 @@
 <resource schema="mars_craters">
 	<meta name="title">Mars Craters</meta>
-	<meta name="description">
-		This resource extends the Mars craters catalog from Robbins and Hynek (2012)
-		catalog and 185 craters
-		added by Lagain et al (2020).
-		The object Ids in this table are compatible to Robbins and Hynek' catalog.
+	<meta name="description" format="rst">
+		A catalogue of Mars craters, extending from Robbins and Hynek
+		(2012)'s catalog :bibcode:2012JGRE..117.5004R.  185 craters
+		were added by Lagain et al (2020).  The object Ids in this
+		table are compatible to Robbins and Hynek' catalog.
 	</meta>
 	<meta name="creationDate">2017-08-28T12:55:00</meta>
-	<meta name="subject">Mars, crater, geology, surface, topography</meta>
-	<meta name="creator.name">Mikhail Minin</meta>
+	<!-- Pick from http://www.ivoa.net/rdf/uat -->
+	<meta name="subject">Mars<meta>
+        <meta name="subject">crater</meta>
+       	<meta name="subject">geology, surface, topography</meta>
+	<meta name="creator">Robbins, S.J.; Hynek, B.M.; Lagain, N.N.;
+		Minin, M.</meta>
 	<meta name="instrument">THEMIS Daytime IR</meta>
 	<meta name="facility">Jacobs University</meta>
 	<meta name="source">https://doi.org/10.1016/j.pss.2019.104755</meta>
-	<meta name="contentLevel"></meta>
+	<meta name="contentLevel">Research</meta>
+	<meta name="contentLevel">Amateur</meta>
 	<meta name="type">Catalog</meta>
-	<meta name="coverage"></meta>
+	<!-- the following is the output of
+	 select sum(s) from (
+	 	select smoc(s_region, 6) as s 
+		from mars_craters_moc.epn_core) q  
+	<meta name="coverage" refframe="Mars"></meta>-->
 
 	<table id="epn_core" onDisk="true">
-		<meta name="info" infoName="SERVICE_PROTOCOL" infoValue="0.3">
-			EPN-TAP
-		</meta>
 		<mixin spatial_frame_type="body" optional_columns="target_region">
 			//epntap2#table-2_0
 		</mixin>
@@ -27,7 +33,7 @@
 			Polygon ICRS [s_region]
 		</stc>
     <column
-			lname="radius"
+			name="radius"
 			type="double precision"
 			ucd="meta.note;meta.main"
 			unit="m"
@@ -36,7 +42,7 @@
 			description="radius from THEMIS IR"
 		/>
 		<column
-			lname="type"
+			name="type"
 			type="integer"
 			ucd="meta.note;meta.main"
 			tablehead="type"
@@ -44,7 +50,7 @@
 			description="Crater classification (int): 1=Valid, 2=Layered ejecta, 3=Ghost, 4=Secondary, 5=False detections."
 		/>
     <column
-			lname="status"
+			name="status"
 			type="text"
 			ucd="meta.note;meta.main"
 			tablehead="status"
@@ -52,7 +58,7 @@
 			description="Crater classification."
 		/>
     <column
-			lname="LRD_MORPH"
+			name="LRD_MORPH"
 			type="text"
 			ucd="meta.note;meta.main"
 			tablehead="Layered ejecta crater morphology"
@@ -60,7 +66,7 @@
 			description="SLE : Single Layered Ejecta, DLE : Double Layered Ejecta MLE : Multiple Layered Ejecta, LARLE : Low-Aspect Ratio Layered Ejecta."
 		/>
     <column
-			lname="type"
+			name="type"
 			type="text"
 			ucd="meta.note;meta.main"
 			tablehead="type"
@@ -68,7 +74,7 @@
 			description="1=Valid, 2=Layered ejecta, 3=Ghost, 4=Secondary, 5=False detections."
 		/>
     <column
-			lname="origin"
+			name="origin"
 			type="text"
 			ucd="meta.note;meta.main"
 			tablehead="origin"
@@ -76,7 +82,7 @@
 			description="Primary crater ID for secondary craters."
 		/>
     <column
-			lname="adding"
+			name="adding"
 			type="text"
 			ucd="meta.note;meta.main"
 			tablehead="adding"
